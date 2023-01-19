@@ -9,6 +9,8 @@
 #include <boost/regex.hpp>
 #include <boost/random.hpp>
 
+#include <osc++.hpp>
+
 #include "RtMidi.h"
 
 std::string trimPort(bool doTrim, const std::string& str) {

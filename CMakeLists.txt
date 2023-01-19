@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 3.1)
 project (nanokontrol2_driver)
 
-add_compile_options(-D__LINUX_ALSA__ -lasound -lpthread)
+add_compile_options(-D__LINUX_ALSA__ -lasound -lpthread -losc++)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
@@ -14,6 +14,7 @@ add_executable (
 	rtmidi/RtMidi.cpp
 	)
 
+target_compile_features(bk_nanokontrol PRIVATE cxx_std_17)
 find_package(ALSA REQUIRED)    
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
@@ -28,4 +29,5 @@ find_package(Boost 1.45.0 COMPONENTS filesystem regex)
 target_link_libraries (bk_nanokontrol ${ALSA_LIBRARIES} Threads::Threads ${Boost_LIBRARIES}) 
 
 include_directories(${Boost_INCLUDE_DIRS})
+include_directories(/usr/local/lib/oscpack)
 target_include_directories(bk_nanokontrol PRIVATE rtmidi)
