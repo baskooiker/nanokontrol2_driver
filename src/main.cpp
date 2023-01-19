@@ -8,8 +8,6 @@
 #include <boost/program_options.hpp>
 #include <boost/regex.hpp>
 #include <boost/random.hpp>
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
 
 #include "RtMidi.h"
 
@@ -60,35 +58,14 @@ bool openOutputPort(RtMidiOut *out, std::string port) {
   return false;
 }
 
-void print(boost::property_tree::ptree const& pt)
-{
-    using boost::property_tree::ptree;
-    ptree::const_iterator end = pt.end();
-    for (ptree::const_iterator it = pt.begin(); it != end; ++it) {
-        std::cout << it->first << ": " << it->second.get_value<std::string>() << std::endl;
-        print(it->second);
-    }
-}
-
 int main( )
 {
-    
-    // std::stringstream ss;
-    // ss << "{\"midi_in\": \"nanoKONTROL2\", \"midi_out\": \"Midi Through\", \"sleep_time\": 10}";
-    
-    boost::property_tree::ptree pt;
-    std::ifstream myfile;
-    myfile.open ("nano_kontrol.json");
-    boost::property_tree::read_json(myfile, pt);
-    myfile.close();
-    // print(pt);
-
     auto midiin = RtMidiIn();
     auto midiout = RtMidiOut();
     
-    std::string in_name = pt.get<std::string>("midi_in");
-    std::string out_name = pt.get<std::string>("midi_out");
-    int sleep_time = pt.get<int>("sleep_time");
+    std::string in_name = "nanoKONTROL2";
+    std::string out_name = "Midi Through";
+    int sleep_time = 10;
 
     if (!openInputPort(&midiin, in_name))
     {

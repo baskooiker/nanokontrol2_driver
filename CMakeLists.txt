@@ -23,7 +23,7 @@ include_directories(${ALSA_INCLUDE_DIRS})
 set(Boost_USE_STATIC_LIBS OFF) 
 set(Boost_USE_MULTITHREADED ON)  
 set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost 1.45.0 COMPONENTS filesystem regex property_tree)
+find_package(Boost 1.45.0 COMPONENTS filesystem regex)
 
 target_link_libraries (bk_nanokontrol ${ALSA_LIBRARIES} Threads::Threads ${Boost_LIBRARIES}) 
 
