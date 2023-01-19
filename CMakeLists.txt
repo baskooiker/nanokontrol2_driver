@@ -2,11 +2,11 @@
 # refer to the root source directory of the project as ${HELLO_SOURCE_DIR} and
 # to the root binary directory of the project as ${HELLO_BINARY_DIR}.
 cmake_minimum_required (VERSION 3.1)
-project (bk_nanokontrol)
+project (nanokontrol2_driver)
 
 add_compile_options(-D__LINUX_ALSA__ -lasound -lpthread)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin) 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 add_executable (
 	bk_nanokontrol 
