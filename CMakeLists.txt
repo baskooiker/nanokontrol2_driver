@@ -29,5 +29,4 @@ find_package(Boost 1.45.0 COMPONENTS filesystem regex)
 target_link_libraries (bk_nanokontrol ${ALSA_LIBRARIES} Threads::Threads ${Boost_LIBRARIES}) 
 
 include_directories(${Boost_INCLUDE_DIRS})
-include_directories(/usr/local/lib/oscpack)
 target_include_directories(bk_nanokontrol PRIVATE rtmidi)
